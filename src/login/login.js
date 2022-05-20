@@ -6,7 +6,21 @@ const Formulario = () => {
 
     const submit = (data) => {
         console.log(data);
+        const user = {
+            email: data.Usuario,
+            password: data.Contraseña
+        }
+        const url = 'http://localhost:8080';
 
+        fetch(url + '/login', {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(user), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json'
+            }
+          }).then(res => res.json())
+          .catch(error => console.error('Error:', error))
+          .then(response => console.log('Success:', response));
     }
 
     return (
