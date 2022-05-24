@@ -2,14 +2,15 @@ import React from "react";
 import { Navigate, Route } from "react-router-dom";
 
 function ProtectedRoute({ component: Component, ...restOfProps }) {
-  const Token = localStorage.getItem("Token");
-  console.log("this", Token);
+  const isRol = localStorage.getItem("Rol");
+  console.log("this", isRol);
 
   return (
     <Route
       {...restOfProps}
-      render={(props) =>
-        Token ? <Component {...props} /> : <Navigate to="/waiter" />
+      render={(Admin) =>
+
+        isRol=== "Admin" ? <Component {...Admin} /> : <Navigate to="/admin" />
       }
     />
   );

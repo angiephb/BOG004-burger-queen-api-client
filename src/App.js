@@ -4,7 +4,7 @@ import Login from './login/login.js'
 import Waiter from './rol/waiter/waiter.js'
 import Chef from './rol/chef/chef.js'
 import Admin from './rol/admin/admin.js';
-//import ProtectedRoute from './componentes/ProtectedRoute';
+import ProtectedRoute from './componentes/ProtectedRoute';
 
 
 
@@ -14,9 +14,9 @@ const App = () => {
        
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/waiter' element={<Waiter />}/>
+        <Route path='/waiter' element={<ProtectedRoute><Waiter/></ProtectedRoute>}/>
         <Route path='/chef' element={<Chef />} />
-        <Route path='/admin' element={<Admin />} />
+        <Route path='/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>}/>
       </Routes>
     </div>
 
