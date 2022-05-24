@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
+import ProtectedRoute from "../componentes/ProtectedRoute";
+import { useNavigate } from "react-router-dom";
 
 const Formulario = () => {
-
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   const submit = (data) => {
-    console.log(data);
+    //console.log(data);
     const user = {
       email: data.Usuario,
       password: data.Contraseña
@@ -20,7 +22,13 @@ const Formulario = () => {
       }
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
-      .then(response => localStorage.setItem('Token:', response.accessToken));
+      .then(response => {
+        localStorage.setItem('Token:', response.accessToken)
+        if(response.user.roles.admin){
+         localStorage.setItem('Rol', 'admin')
+        }
+        console.log(response.user.roles.admin)
+      });
 
   }
 
@@ -45,7 +53,9 @@ const Formulario = () => {
           <option value='Cocina'>Cocina</option>
           <option value='Administrador'>Administrador</option>
         </select>
-        <input type='submit' value='Ingresar' />
+        <button onClick={() => navigate(ProtectedRoute)}>
+        Ingresar
+      </button>
       </form>
     </div>
   )
