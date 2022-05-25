@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
-import ProtectedRoute from "../componentes/ProtectedRoute";
+import ProtectedRoute from "../componentes/ProtectedRoute.js";
+import Header from "../header/header.js";
 import { useNavigate } from "react-router-dom";
 
 const Formulario = () => {
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   const submit = (data) => {
@@ -24,8 +25,8 @@ const Formulario = () => {
       .catch(error => console.error('Error:', error))
       .then(response => {
         localStorage.setItem('Token:', response.accessToken)
-        if(response.user.roles.admin){
-         localStorage.setItem('Rol', 'admin')
+        if (response.user.roles.admin) {
+          localStorage.setItem('Rol', 'admin')
         }
         console.log(response.user.roles.admin)
       });
@@ -33,29 +34,41 @@ const Formulario = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(submit)}>
-        <div className='row mb-3'>
-          <label className='col-sm-2 col-form-label'>Usuario</label>
-          <div className='col-sm-10'>
+    <div className='view-login'>
+      <div>
+        <Header />
+      </div>
+      <form onSubmit={handleSubmit(submit)} className='form'>
+
+        <div className='row mb-5'>
+          <label className='col-sm-8 col-form-label'>Usuario</label>
+          <div className='col-sm-8'>
             <input type='email' className='form-control' id='inputEmail3' {...register('Usuario')} />
           </div>
         </div>
-        <div className='row mb-3'>
-          <label className='col-sm-2 col-form-label'>Contraseña</label>
-          <div className='col-sm-10'>
+
+        <div className='row mb-5'>
+          <label className='col-sm-8 col-form-label'>Contraseña</label>
+          <div className='col-sm-8'>
             <input type='password' className='form-control' id='inputPassword3' {...register('Contraseña')} />
           </div>
         </div>
-        <label className='col-sm-2 col-form-label'>Quien eres?</label>
-        <select className='form-select'  {...register('Rol')} aria-label='Default select example'>
-          <option value='Mesero'>Mesero</option>
-          <option value='Cocina'>Cocina</option>
-          <option value='Administrador'>Administrador</option>
-        </select>
-        <button onClick={() => navigate(ProtectedRoute)}>
-        Ingresar
-      </button>
+
+        <div className='row mb-5'>
+          <label className='col-sm-8 col-form-label'>Quien eres?</label>
+          <div className='col-sm-8'>
+            <select className='form-select' {...register('Rol')} aria-label='Default select example'>
+              <option value='Mesero'>Mesero</option>
+              <option value='Cocina'>Cocina</option>
+              <option value='Administrador'>Administrador</option>
+            </select>
+          </div>
+        </div>
+        <div className="btnL">
+          <button className="btn-login" onClick={() => Navigate(ProtectedRoute('Rol'))}>
+            Ingresar
+          </button>
+        </div>
       </form>
     </div>
   )

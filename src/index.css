@@ -1,4 +1,14 @@
+@font-face {
+  font-family: balooSemibold;
+  src: url('fonts/BalooDa2-SemiBold.ttf');
+}
+@font-face {
+  font-family: balooRegular;
+  src: url('fonts/BalooDa2-Regular.ttf');
+}
+
 body {
+  background-color: #FAF0CC;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -12,6 +22,59 @@ code {
     monospace;
 }
 
+/* aqui esta la vista login */
+.view-login{
+  display: flex;
+  flex-direction: column;
+}
+
+/* FOODHUB */
+.header-logo{
+  text-align: center;
+  margin: 20px;
+}
+
+.App-logo{
+  width: 67%;
+}
+
+/* formulario login */
+.form{
+  padding: 100px 0px 100px 0px;
+  font-family: balooSemibold;
+}
+
 .form-control{
-  background-color: #60ff11;
+  border: 0;
+  background-color: #FFD384;
+  font-size: 25px;
+}
+
+.row.mb-5 {
+  font-size: 30px;
+  justify-content: center;
+}
+
+.form-select{
+  border: 0;
+  background-color: #FFD384;
+  font-size: 25px;
+  background-size: 30px 30px;
+}
+
+option{
+  font-size: 15px;
+}
+
+.btnL{
+  text-align: center;
+}
+
+.btn-login{
+  border: none;
+  border-radius: 60px;
+  background-color: #C6DA20;
+  color: #00000090;
+  font-size: 30px;
+  width: 30%;
 }
