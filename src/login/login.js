@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import ProtectedRoute from "../componentes/ProtectedRoute.js";
+//import ProtectedRoute from "../componentes/ProtectedRoute.js";
 import Header from "../header/header.js";
 import { useNavigate } from "react-router-dom";
 
@@ -25,10 +25,16 @@ const Formulario = () => {
       .catch(error => console.error('Error:', error))
       .then(response => {
         localStorage.setItem('Token:', response.accessToken)
-        if (response.user.roles.admin) {
+        console.log(response.user)
+        if (response.user.roles.admin === true) {
           localStorage.setItem('Rol', 'admin')
+          Navigate('/admin')
         }
-        console.log(response.user.roles.admin)
+        else if(response.user.roles.mesero === true){
+          localStorage.setItem('Rol', 'mesero')
+          Navigate('/waiter')
+        }
+        console.log(response.user, 'esta es la info')
       });
 
   }
@@ -65,7 +71,7 @@ const Formulario = () => {
           </div>
         </div>
         <div className="btnL">
-          <button className="btn-login" onClick={() => Navigate(ProtectedRoute('Rol'))}>
+          <button className="btn-login" type='submit' >
             Ingresar
           </button>
         </div>
