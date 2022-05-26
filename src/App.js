@@ -16,16 +16,16 @@ const App = () => {
 
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='waiter' 
-        element={
-            <ProtectedRoute user={Waiter}>
+        <Route path='waiter'
+          element={
+            <ProtectedRoute>
               <Waiter />
             </ProtectedRoute>
           } />
         <Route path='/chef' element={<Chef />} />
-        <Route path="admin"
+        <Route exact path='/admin'
           element={
-            <ProtectedRoute user={Admin}>
+            <ProtectedRoute>
               <Admin />
             </ProtectedRoute>
           } />

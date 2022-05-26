@@ -1,14 +1,16 @@
 import { useForm } from "react-hook-form";
-//import ProtectedRoute from "../componentes/ProtectedRoute.js";
+// import { ErrorMessage } from "@hookform/error-message";
+import React, { useState } from "react";
 import Header from "../header/header.js";
 import { useNavigate } from "react-router-dom";
 
 const Formulario = () => {
   const Navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, /* errors  */ } = useForm();
+  const [rol, setRol] = useState('');
 
   const submit = (data) => {
-    //console.log(data);
+    console.log('aquiesta', rol);
     const user = {
       email: data.Usuario,
       password: data.Contraseña
@@ -25,18 +27,21 @@ const Formulario = () => {
       .catch(error => console.error('Error:', error))
       .then(response => {
         localStorage.setItem('Token:', response.accessToken)
-        console.log(response.user)
-        if (response.user.roles.admin === true) {
-          localStorage.setItem('Rol', 'admin')
+        console.log('holie', response.user.roles)
+        if (response.user.roles.admin) {
+          localStorage.getItem('Token:')
           Navigate('/admin')
         }
-        else if(response.user.roles.mesero === true){
-          localStorage.setItem('Rol', 'mesero')
+        else if (response.user.roles.mesero) {
+          localStorage.getItem('Token:')
           Navigate('/waiter')
         }
+        else {
+          localStorage.getItem('Token:')
+          Navigate('/chef')
+        }
         console.log(response.user, 'esta es la info')
-      });
-
+      })
   }
 
   return (
@@ -49,21 +54,35 @@ const Formulario = () => {
         <div className='row mb-5'>
           <label className='col-sm-8 col-form-label'>Usuario</label>
           <div className='col-sm-8'>
-            <input type='email' className='form-control' id='inputEmail3' {...register('Usuario')} />
+            <input
+              type='email'
+              name='usuario'
+              className='form-control'
+              id='inputEmail3'
+              {...register('Usuario', {
+                required: true,
+                message: "Please enter your name"
+              })} />
+            {/* <ErrorMessage
+              errors={errors}
+              name="name"
+              render={({ message }) => <p>{message}</p>}
+            /> */}
           </div>
         </div>
 
         <div className='row mb-5'>
           <label className='col-sm-8 col-form-label'>Contraseña</label>
           <div className='col-sm-8'>
-            <input type='password' className='form-control' id='inputPassword3' {...register('Contraseña')} />
+            <input type='password' className='form-control' id='inputPassword3' {...register('Contraseña', { required: true })} />
           </div>
         </div>
 
         <div className='row mb-5'>
           <label className='col-sm-8 col-form-label'>Quien eres?</label>
           <div className='col-sm-8'>
-            <select className='form-select' {...register('Rol')} aria-label='Default select example'>
+            <select className='form-select' name='Rol' value={rol} onChange={(e) => { setRol(e.target.value); }} >
+              <option value='rol'> Escoge tu rol</option>
               <option value='Mesero'>Mesero</option>
               <option value='Cocina'>Cocina</option>
               <option value='Administrador'>Administrador</option>
@@ -71,9 +90,7 @@ const Formulario = () => {
           </div>
         </div>
         <div className="btnL">
-          <button className="btn-login" type='submit' >
-            Ingresar
-          </button>
+          <button className="btn-login" type='submit'> Ingresar </button>
         </div>
       </form>
     </div>
