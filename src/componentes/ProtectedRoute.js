@@ -1,15 +1,24 @@
-import React from "react";
 import { Navigate } from "react-router-dom";
-// import Login from './login/login.js'
-// import Waiter from './rol/waiter/waiter.js'
-// import Chef from './rol/chef/chef.js'
-// import Admin from '../rol/admin/admin.js';
+import Admin from "../rol/admin/admin";
+import Waiter from "../rol/waiter/waiter";
+import Chef from "../rol/chef/chef";
 
-const ProtectedRoute = ({ user, children }) => {
-  if (!user) {
-    return <Navigate to="/" replace />;
+const ProtectedRoute = ({ children }) => {
+  console.log(children);
+  const IsAuthentication = localStorage.getItem('Token:')
+  const IsRol = localStorage.getItem('rol')
+  if (IsRol === 'admin' && !IsAuthentication/*  !== null */) {
+    return <Admin/>;
   }
-
-  return children;
+  if (IsRol === 'waiter' && IsAuthentication !== null) {
+    return <Waiter/>;
+  }
+  if (IsRol === 'chef' && IsAuthentication !== null) {
+    return <Chef/>;
+  }
+  else{
+    return <Navigate to='/' />
+  }
 };
+
 export default ProtectedRoute;

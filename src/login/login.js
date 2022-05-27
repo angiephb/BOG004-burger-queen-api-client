@@ -1,14 +1,15 @@
 import { useForm } from "react-hook-form";
-//import ProtectedRoute from "../componentes/ProtectedRoute.js";
+import React, { useState } from "react";
 import Header from "../header/header.js";
 import { useNavigate } from "react-router-dom";
 
 const Formulario = () => {
   const Navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, /* formState: { errors } */ } = useForm();
+  const [rol, setRol] = useState('');
+  console.log(rol);
 
   const submit = (data) => {
-    //console.log(data);
     const user = {
       email: data.Usuario,
       password: data.Contraseña
@@ -25,19 +26,31 @@ const Formulario = () => {
       .catch(error => console.error('Error:', error))
       .then(response => {
         localStorage.setItem('Token:', response.accessToken)
-        console.log(response.user)
-        if (response.user.roles.admin === true) {
-          localStorage.setItem('Rol', 'admin')
+        // console.log('ey', response.user.roles);
+        if (response.user.roles.admin) {
+          localStorage.setItem('rol', 'admin')
           Navigate('/admin')
         }
-        else if(response.user.roles.mesero === true){
-          localStorage.setItem('Rol', 'mesero')
+        if (response.user.roles.mesero) {
+          localStorage.setItem('rol', 'waiter')
           Navigate('/waiter')
         }
-        console.log(response.user, 'esta es la info')
-      });
-
+        if (response.user.roles.cocina) {
+          localStorage.setItem('rol', 'chef')
+          Navigate('/chef')
+        }
+      })
   }
+  /* const errorMsj = {
+    req: 'Este campo no puede estar vacio',
+    mail: 'Introduce una dirección de correo válida',
+    passwordNum: 'Debes ingresar solo numeros',
+    passwordLength: 'La contraseña excede el numero de caracteres (6)'
+  };
+  const patterns = {
+    mail: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+    password: /[0-9]{1,6}/,
+  }; */
 
   return (
     <div className='view-login'>
@@ -49,21 +62,38 @@ const Formulario = () => {
         <div className='row mb-5'>
           <label className='col-sm-8 col-form-label'>Usuario</label>
           <div className='col-sm-8'>
-            <input type='email' className='form-control' id='inputEmail3' {...register('Usuario')} />
+            <input
+              type='email'
+              name='usuario'
+              className='form-control'
+              id='inputEmail3'
+              {...register('Usuario', { required: true/* , pattern: patterns.mail */ })}
+            />
+            {/* {errors.Usuario?.type === 'required' && <p>{errorMsj.req}</p>}
+            {errors.Usuario?.type === 'pattern' && <p>{errorMsj.mail}</p>} */}
           </div>
         </div>
 
         <div className='row mb-5'>
           <label className='col-sm-8 col-form-label'>Contraseña</label>
           <div className='col-sm-8'>
-            <input type='password' className='form-control' id='inputPassword3' {...register('Contraseña')} />
+            <input
+              type='password'
+              className='form-control'
+              id='inputPassword3'
+              {...register('Password', { required: true/*  , maxLength: 6, pattern: patterns.password */ })}
+            />
+            {/* {errors.Password?.type === 'required' && <p>{errorMsj.req}</p>}
+            {errors.Password?.type === 'maxLength' && <p>{errorMsj.passwordLength}</p>}
+            {errors.Password?.type === 'pattern' && <p>{errorMsj.passwordNum}</p>} */}
           </div>
         </div>
 
         <div className='row mb-5'>
           <label className='col-sm-8 col-form-label'>Quien eres?</label>
           <div className='col-sm-8'>
-            <select className='form-select' {...register('Rol')} aria-label='Default select example'>
+            <select className='form-select' name='Rol' value={rol} onChange={(e) => { setRol(e.target.value); }} >
+              <option value='rol'> Escoge tu rol</option>
               <option value='Mesero'>Mesero</option>
               <option value='Cocina'>Cocina</option>
               <option value='Administrador'>Administrador</option>
@@ -71,9 +101,7 @@ const Formulario = () => {
           </div>
         </div>
         <div className="btnL">
-          <button className="btn-login" type='submit' >
-            Ingresar
-          </button>
+          <button className="btn-login" type='submit'> Ingresar </button>
         </div>
       </form>
     </div>
