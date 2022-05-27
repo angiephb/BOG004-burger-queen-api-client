@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Formulario = () => {
   const Navigate = useNavigate();
-  const { register, handleSubmit, /* formState: { errors } */ } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [rol, setRol] = useState('');
   console.log(rol);
 
@@ -41,7 +41,7 @@ const Formulario = () => {
         }
       })
   }
-  /* const errorMsj = {
+  const errorMsj = {
     req: 'Este campo no puede estar vacio',
     mail: 'Introduce una dirección de correo válida',
     passwordNum: 'Debes ingresar solo numeros',
@@ -50,7 +50,7 @@ const Formulario = () => {
   const patterns = {
     mail: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
     password: /[0-9]{1,6}/,
-  }; */
+  };
 
   return (
     <div className='view-login'>
@@ -67,10 +67,10 @@ const Formulario = () => {
               name='usuario'
               className='form-control'
               id='inputEmail3'
-              {...register('Usuario', { required: true/* , pattern: patterns.mail */ })}
+              {...register('Usuario', { required: true, pattern: patterns.mail })}
             />
-            {/* {errors.Usuario?.type === 'required' && <p>{errorMsj.req}</p>}
-            {errors.Usuario?.type === 'pattern' && <p>{errorMsj.mail}</p>} */}
+            {errors.Usuario?.type === 'required' && <p>{errorMsj.req}</p>}
+            {errors.Usuario?.type === 'pattern' && <p>{errorMsj.mail}</p>}
           </div>
         </div>
 
@@ -81,11 +81,11 @@ const Formulario = () => {
               type='password'
               className='form-control'
               id='inputPassword3'
-              {...register('Password', { required: true/*  , maxLength: 6, pattern: patterns.password */ })}
+              {...register('Contraseña', { required: true, maxLength: 6, pattern: patterns.password })}
             />
-            {/* {errors.Password?.type === 'required' && <p>{errorMsj.req}</p>}
-            {errors.Password?.type === 'maxLength' && <p>{errorMsj.passwordLength}</p>}
-            {errors.Password?.type === 'pattern' && <p>{errorMsj.passwordNum}</p>} */}
+            {errors.Contraseña?.type === 'required' && <p>{errorMsj.req}</p>}
+            {errors.Contraseña?.type === 'maxLength' && <p>{errorMsj.passwordLength}</p>}
+            {errors.Contraseña?.type === 'pattern' && <p>{errorMsj.passwordNum}</p>}
           </div>
         </div>
 
