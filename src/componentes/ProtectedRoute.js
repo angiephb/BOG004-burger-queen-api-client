@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   console.log(children);
   const IsAuthentication = localStorage.getItem('Token:')
   const IsRol = localStorage.getItem('rol')
-  if (IsRol === 'admin' && !IsAuthentication/*  !== null */) {
+  if (IsRol === 'admin' && IsAuthentication !== null) {
     return <Admin/>;
   }
   if (IsRol === 'waiter' && IsAuthentication !== null) {
