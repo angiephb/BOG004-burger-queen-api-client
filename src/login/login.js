@@ -1,16 +1,15 @@
 import { useForm } from "react-hook-form";
-// import { ErrorMessage } from "@hookform/error-message";
 import React, { useState } from "react";
 import Header from "../header/header.js";
 import { useNavigate } from "react-router-dom";
 
 const Formulario = () => {
   const Navigate = useNavigate();
-  const { register, handleSubmit, /* errors  */ } = useForm();
+  const { register, handleSubmit, /* formState: { errors } */ } = useForm();
   const [rol, setRol] = useState('');
+  console.log(rol);
 
   const submit = (data) => {
-    console.log('aquiesta', rol);
     const user = {
       email: data.Usuario,
       password: data.Contraseña
@@ -27,22 +26,31 @@ const Formulario = () => {
       .catch(error => console.error('Error:', error))
       .then(response => {
         localStorage.setItem('Token:', response.accessToken)
-        console.log('holie', response.user.roles)
+        // console.log('ey', response.user.roles);
         if (response.user.roles.admin) {
-          localStorage.getItem('Token:')
+          localStorage.setItem('rol', 'admin')
           Navigate('/admin')
         }
-        else if (response.user.roles.mesero) {
-          localStorage.getItem('Token:')
+        if (response.user.roles.mesero) {
+          localStorage.setItem('rol', 'waiter')
           Navigate('/waiter')
         }
-        else {
-          localStorage.getItem('Token:')
+        if (response.user.roles.cocina) {
+          localStorage.setItem('rol', 'chef')
           Navigate('/chef')
         }
-        console.log(response.user, 'esta es la info')
       })
   }
+  /* const errorMsj = {
+    req: 'Este campo no puede estar vacio',
+    mail: 'Introduce una dirección de correo válida',
+    passwordNum: 'Debes ingresar solo numeros',
+    passwordLength: 'La contraseña excede el numero de caracteres (6)'
+  };
+  const patterns = {
+    mail: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+    password: /[0-9]{1,6}/,
+  }; */
 
   return (
     <div className='view-login'>
@@ -59,22 +67,25 @@ const Formulario = () => {
               name='usuario'
               className='form-control'
               id='inputEmail3'
-              {...register('Usuario', {
-                required: true,
-                message: "Please enter your name"
-              })} />
-            {/* <ErrorMessage
-              errors={errors}
-              name="name"
-              render={({ message }) => <p>{message}</p>}
-            /> */}
+              {...register('Usuario', { required: true/* , pattern: patterns.mail */ })}
+            />
+            {/* {errors.Usuario?.type === 'required' && <p>{errorMsj.req}</p>}
+            {errors.Usuario?.type === 'pattern' && <p>{errorMsj.mail}</p>} */}
           </div>
         </div>
 
         <div className='row mb-5'>
           <label className='col-sm-8 col-form-label'>Contraseña</label>
           <div className='col-sm-8'>
-            <input type='password' className='form-control' id='inputPassword3' {...register('Contraseña', { required: true })} />
+            <input
+              type='password'
+              className='form-control'
+              id='inputPassword3'
+              {...register('Password', { required: true/*  , maxLength: 6, pattern: patterns.password */ })}
+            />
+            {/* {errors.Password?.type === 'required' && <p>{errorMsj.req}</p>}
+            {errors.Password?.type === 'maxLength' && <p>{errorMsj.passwordLength}</p>}
+            {errors.Password?.type === 'pattern' && <p>{errorMsj.passwordNum}</p>} */}
           </div>
         </div>
 
