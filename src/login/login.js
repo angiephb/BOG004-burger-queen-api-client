@@ -27,15 +27,15 @@ const Formulario = () => {
       .then(response => {
         localStorage.setItem('Token:', response.accessToken)
         // console.log('ey', response.user.roles);
-        if (response.user.roles.admin) {
+        if (response.user.roles.admin && rol === 'Administrador') {
           localStorage.setItem('rol', 'admin')
           Navigate('/admin')
         }
-        if (response.user.roles.mesero) {
+        if (response.user.roles.mesero && rol === 'Mesero') {
           localStorage.setItem('rol', 'waiter')
           Navigate('/waiter')
         }
-        if (response.user.roles.cocina) {
+        if (response.user.roles.cocina && rol ==='Cocina') {
           localStorage.setItem('rol', 'chef')
           Navigate('/chef')
         }
@@ -69,8 +69,8 @@ const Formulario = () => {
               id='inputEmail3'
               {...register('Usuario', { required: true, pattern: patterns.mail })}
             />
-            {errors.Usuario?.type === 'required' && <p>{errorMsj.req}</p>}
-            {errors.Usuario?.type === 'pattern' && <p>{errorMsj.mail}</p>}
+            {errors.Usuario?.type === 'required' && <p className='fail'>{errorMsj.req}</p>}
+            {errors.Usuario?.type === 'pattern' && <p className='fail'>{errorMsj.mail}</p>}
           </div>
         </div>
 
@@ -83,14 +83,14 @@ const Formulario = () => {
               id='inputPassword3'
               {...register('Contraseña', { required: true, maxLength: 6, pattern: patterns.password })}
             />
-            {errors.Contraseña?.type === 'required' && <p>{errorMsj.req}</p>}
-            {errors.Contraseña?.type === 'maxLength' && <p>{errorMsj.passwordLength}</p>}
-            {errors.Contraseña?.type === 'pattern' && <p>{errorMsj.passwordNum}</p>}
+            {errors.Contraseña?.type === 'required' && <p className='fail'>{errorMsj.req}</p>}
+            {errors.Contraseña?.type === 'maxLength' && <p className='fail'>{errorMsj.passwordLength}</p>}
+            {errors.Contraseña?.type === 'pattern' && <p className='fail'>{errorMsj.passwordNum}</p>}
           </div>
         </div>
 
         <div className='row mb-5'>
-          <label className='col-sm-8 col-form-label'>Quien eres?</label>
+          <label className='col-sm-8 col-form-label'>Quién eres?</label>
           <div className='col-sm-8'>
             <select className='form-select' name='Rol' value={rol} onChange={(e) => { setRol(e.target.value); }} >
               <option value='rol'> Escoge tu rol</option>
