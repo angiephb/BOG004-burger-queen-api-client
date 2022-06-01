@@ -23,28 +23,28 @@ code {
 }
 
 /* aqui esta la vista login */
-.view-login{
+.view-login {
   display: flex;
   flex-direction: column;
 }
 
 /* FOODHUB */
-.header-logo{
+.header-logo {
   text-align: center;
   margin: 20px;
 }
 
-.App-logo{
+.App-logo {
   width: 67%;
 }
 
 /* formulario login */
-.form{
+.form {
   padding: 100px 0px 100px 0px;
-  font-family: balooSemibold;
+  font-family: balooSemibold, sans-serif;
 }
 
-.form-control{
+.form-control {
   border: 0;
   background-color: #FFD384;
   font-size: 25px;
@@ -55,26 +55,73 @@ code {
   justify-content: center;
 }
 
-.form-select{
+.form-select {
   border: 0;
   background-color: #FFD384;
   font-size: 25px;
   background-size: 30px 30px;
 }
 
-option{
+option {
   font-size: 15px;
 }
 
-.btnL{
+.btnL {
   text-align: center;
 }
 
-.btn-login{
+.btn-login {
   border: none;
   border-radius: 60px;
   background-color: #C6DA20;
   color: #00000090;
   font-size: 30px;
   width: 30%;
+}
+
+.fail{
+  color: #DA1212;
+  font-family: balooRegular, sans-serif;
+  font-size: 25px;
+  padding-top: 10px;
+
+}
+
+/* aqui estan la vista mesero */
+
+.logoview{
+  width: 50%;
+}
+
+.headerview{
+  margin: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-between;
+    align-items: center;
+}
+
+hr {
+  width:100%;
+  border-top-width: 5px;
+}
+.gretting{
+  font-size: 40px;
+  font-family: balooSemibold, sans-serif;
+  margin: 25px;
+
+}
+
+.btn-success{
+  font-family: balooSemibold; 
+  font-size: 50px;
+  width: 70px;
+  height: 70px;
+  border-radius: 60%;
+  background-color: #C6DA20;
+  color: #00000070;
+  border:none;
+
 }

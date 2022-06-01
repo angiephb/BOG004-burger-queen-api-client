@@ -1,10 +1,17 @@
-
+import HeaderView from "../../componentes/HeaderView.js";
 
 const Waiter = () => {
     return (
-        <h1>
-            Waiter
-        </h1>
+        <main>
+            <header>
+                <HeaderView />
+            </header>
+            <section>
+                <p className='gretting'>Hola Mesero, </p>
+                <i className='fa-solid fa-circle-plus'></i>
+            </section>
+        </main>
+
     );
 
 }
