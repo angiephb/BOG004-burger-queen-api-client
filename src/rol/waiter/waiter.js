@@ -6,14 +6,25 @@ const Waiter = () => {
             <header>
                 <HeaderView />
             </header>
-            <section>
+            <section className='btnWaiter'>
                 <p className='gretting'>Hola Mesero, </p>
-                <i className='fa-solid fa-circle-plus'></i>
+
+                <aside className='orderbtn'>
+                    <div className='btns'>
+                    <button type="button" className='btn btn-default btn-circle'><i className="fa-solid fa-plus"></i>
+                    </button>
+                    <label className="labelOrder">Nueva Orden</label>
+                    </div>
+                    <div className='btns'>
+                    <button type="button" className='btn btn-default btn-circle'><i class="fa-solid fa-clipboard-list"></i>
+
+                    </button>
+                    <label className="labelOrder">Tus Ordenes</label>
+                    </div>
+                </aside>
             </section>
         </main>
-
     );
-
 }
 
 

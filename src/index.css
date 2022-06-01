@@ -2,6 +2,7 @@
   font-family: balooSemibold;
   src: url('fonts/BalooDa2-SemiBold.ttf');
 }
+
 @font-face {
   font-family: balooRegular;
   src: url('fonts/BalooDa2-Regular.ttf');
@@ -79,7 +80,7 @@ option {
   width: 30%;
 }
 
-.fail{
+.fail {
   color: #DA1212;
   font-family: balooRegular, sans-serif;
   font-size: 25px;
@@ -89,39 +90,67 @@ option {
 
 /* aqui estan la vista mesero */
 
-.logoview{
+.logoview {
   width: 50%;
 }
 
-.headerview{
+.headerview {
   margin: 25px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: stretch;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: space-between;
+  align-items: center;
 }
 
 hr {
-  width:100%;
+  width: 100%;
   border-top-width: 5px;
 }
-.gretting{
+
+.gretting {
   font-size: 40px;
   font-family: balooSemibold, sans-serif;
   margin: 25px;
 
 }
+/* botones mesero */
 
-.btn-success{
-  font-family: balooSemibold; 
-  font-size: 50px;
+.btnWaiter{
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* aqui esta el boton nueva orden */
+.orderbtn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 25px;
+  flex-direction: row;
+  width: 94vw;
+}
+
+.btn-circle {
   width: 70px;
   height: 70px;
-  border-radius: 60%;
+  padding: 6px 0px;
+  border-radius: 60px;
+  text-align: center;
+  font-size: 45px;
+  font-family: balooSemibold, sans-serif;
+  line-height: 1.42857;
   background-color: #C6DA20;
   color: #00000070;
-  border:none;
+}
 
+.labelOrder {
+  font-family: balooRegular, sans-serif;
+  font-size: 30px;
+  color: #91A900;
+  margin-left: 20px;
 }
