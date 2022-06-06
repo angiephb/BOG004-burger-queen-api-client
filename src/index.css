@@ -154,3 +154,27 @@ hr {
   color: #91A900;
   margin-left: 20px;
 }
+
+/* aqui esta los botones menu */
+.btnMenu{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 25px;
+  flex-direction: column;
+  width: 94vw;
+}
+
+.btn-menu{
+  width: 200px;
+  height: 60px;
+  padding: 6px 0px;
+  border-radius: 60px;
+  text-align: center;
+  font-size: 35px;
+  font-family: balooSemibold, sans-serif;
+  line-height: 1.42857;
+  background-color: #C6DA20;
+  color: #00000080;
+  margin: 15px;
+}
