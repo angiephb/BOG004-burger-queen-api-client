@@ -12,10 +12,10 @@ const counterLess=(e)=>{
     }
 return(
 <main>
-    <section>
-        <button onClick={(e)=>counterPlus(e)}><i className='fa-solid fa-plus'></i></button>
-        <p>{count}</p>
-        <button onClick={(e)=>counterLess(e)}><i className='fa-solid fa-minus'></i></button>
+    <section className='btnCount'>
+        <button className='btnPlus' onClick={(e)=>counterPlus(e)}><i className='fa-solid fa-plus'></i></button>
+        <p className='count'>{count}</p>
+        <button className='btnLess'onClick={(e)=>counterLess(e)}><i className='fa-solid fa-minus'></i></button>
     </section>
 </main>
 

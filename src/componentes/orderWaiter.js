@@ -19,30 +19,21 @@ const OrderWaiter = () => {
             }
         }).then(res => res.json())
             .then(response => {
-                console.log( 'is lunch',isLunch)
+                console.log('is lunch', isLunch)
                 if (isLunch) {
                     setProducts(response.filter(product => product.type === 'Desayuno'))
                 } else {
                     setProducts(response.filter(product => product.type === 'Almuerzo'))
                 }
-
-
             })
             .catch(error => console.error('Error:', error))
     }
 
-
     const clickDesayuno = (e) => {
         e.preventDefault()
         console.log('desayuno')
-      
-            setIsLunch(()=>false)
-     
-        
-            getListProducts()
-    
-        
-        
+        setIsLunch(() => false)
+        getListProducts()
     }
     const clickAlmuerzo = (e) => {
         e.preventDefault()
@@ -64,19 +55,19 @@ const OrderWaiter = () => {
                 <section className='containerMenu'>
                     <section className='btnMenu'>
                         <section>
-                        
-                            <button type="button" className="btn btn-menu" onClick={e=>clickDesayuno(e)}>Desayuno</button>
+
+                            <button type="button" className="btn btn-menu" onClick={e => clickDesayuno(e)}>Desayuno</button>
                         </section>
 
                         <section>
-                            <button type="button" className="btn btn-menu" onClick={e=>clickAlmuerzo(e)}>Almuerzo</button>
+                            <button type="button" className="btn btn-menu" onClick={e => clickAlmuerzo(e)}>Almuerzo</button>
                         </section>
                     </section>
                     <section className='products'>
                         {/* aqui van los productos */}
                         <ul>
                             {products.map(item =>
-                                <li key={`item_${item.id}`}>{item.name}<ButtonCount/></li>
+                                <li key={`item_${item.id}`}>{item.name}<ButtonCount /></li>
                             )}
                         </ul>
                     </section>
