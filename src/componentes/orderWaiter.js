@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import ButtonCount from "./buttoncount";
 
 const OrderWaiter = () => {
 
-    const [ products, setProducts] = useState([ ])
+    const [products, setProducts] = useState([])
+    const [isLunch, setIsLunch] = useState(true)
 
     const getListProducts = () => {
         const url = 'http://localhost:8080';
@@ -17,36 +19,61 @@ const OrderWaiter = () => {
             }
         }).then(res => res.json())
             .then(response => {
-                setProducts(() => [...response.map(producto=>producto.name)])
-                console.log('respuestA', response.map(producto=>producto.name))
+                console.log('is lunch', isLunch)
+                if (isLunch) {
+                    setProducts(response.filter(product => product.type === 'Desayuno'))
+                } else {
+                    setProducts(response.filter(product => product.type === 'Almuerzo'))
+                }
             })
             .catch(error => console.error('Error:', error))
     }
 
+    const clickDesayuno = (e) => {
+        e.preventDefault()
+        console.log('desayuno')
+        setIsLunch(() => false)
+        getListProducts()
+    }
+    const clickAlmuerzo = (e) => {
+        e.preventDefault()
+        setIsLunch(true)
+        getListProducts()
+    }
+
     return (
         <main>
-            <form>
-                <input type='text' placeholder='Nombre del cliente' />
-                <input type='text' placeholder='# Mesa' />
-            <section className='btnMenu'>
-                <section>
-                    <button type="button" className="btn btn-menu"  onClick={() => { getListProducts(products); }}>Desayuno</button>
+            <form className='formMenu'>
+                <section className='containerInput'>
+                    <section>
+                        <input type='text' className='inputCliente' placeholder='Nombre del cliente' />
+                    </section>
+                    <section>
+                        <input type='text' className='inputMesa' placeholder='# Mesa' />
+                    </section>
                 </section>
+                <section className='containerMenu'>
+                    <section className='btnMenu'>
+                        <section>
 
-                <section>
-                    <button type="button" className="btn btn-menu">Almuerzo</button>
+                            <button type="button" className="btn btn-menu" onClick={e => clickDesayuno(e)}>Desayuno</button>
+                        </section>
+
+                        <section>
+                            <button type="button" className="btn btn-menu" onClick={e => clickAlmuerzo(e)}>Almuerzo</button>
+                        </section>
+                    </section>
+                    <section className='products'>
+                        {/* aqui van los productos */}
+                        <ul>
+                            {products.map(item =>
+                                <li key={`item_${item.id}`}>{item.name}<ButtonCount /></li>
+                            )}
+                        </ul>
+                    </section>
                 </section>
-            </section>
             </form>
-
-
-            <section>
-                {/* aqui van los productos */}
-                <ul>
-                    {products}
-                </ul>
-            </section>
-        </main>
+        </main >
     )
 }
 export default OrderWaiter;

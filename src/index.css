@@ -104,6 +104,12 @@ option {
   align-items: center;
 }
 
+.btnOut {
+  background-color: #FAF0CC;
+  border: none;
+  font-size: 22px;
+}
+
 hr {
   width: 100%;
   border-top-width: 5px;
@@ -115,9 +121,10 @@ hr {
   margin: 25px;
 
 }
+
 /* botones mesero */
 
-.btnWaiter{
+.btnWaiter {
   height: 85vh;
   display: flex;
   flex-direction: column;
@@ -155,17 +162,78 @@ hr {
   margin-left: 20px;
 }
 
+/* formulario */
+.formMenu {
+  width: 100vw;
+}
+
+/* aqui esta el contenedor del menu */
+.containerMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline;
+  margin-top: 20px;
+}
+
+/* aqui esta ael contenedor del input */
+.containerInput {
+  display: flex;
+  justify-content: center
+}
+
+/* aqui esta los input menu */
+.inputCliente {
+  font-family: balooRegular, sans-serif;
+  font-size: 40px;
+  text-align: center;
+  background-color: #FFD384;
+  color: #F08C00;
+  border: none;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.inputCliente:hover {
+  background-color: #FFD38470;
+  border: 2px solid #FFD384;
+}
+
+.inputMesa {
+  font-family: balooRegular, sans-serif;
+  font-size: 40px;
+  color: #F08C00;
+  background-color: #FFD384;
+  font-size: 40px;
+  border: none;
+  width: 150px;
+  margin-left: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.inputMesa:hover {
+  background-color: #FFD38470;
+  border: 2px solid #FFD384;
+}
+
+::placeholder {
+  font-family: balooRegular, sans-serif;
+  font-size: 40px;
+  color: #F08C00;
+  font-size: 40px;
+  text-align: center;
+}
+
 /* aqui esta los botones menu */
-.btnMenu{
+.btnMenu {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin: 25px;
   flex-direction: column;
-  width: 94vw;
+  width: 30vw;
 }
 
-.btn-menu{
+.btn-menu {
   width: 200px;
   height: 60px;
   padding: 6px 0px;
@@ -177,4 +245,66 @@ hr {
   background-color: #C6DA20;
   color: #00000080;
   margin: 15px;
+}
+
+.btn-menu:hover{
+  background-color: #C6DA2020;
+  color: #91A900;
+  border: 3px solid #91A900;
+  
+}
+
+/* lista productos */
+.products {
+  width: 410px;
+  text-align: center;
+  padding: 10px;
+}
+
+.products ul {
+  padding: 0;
+  margin: 0;
+}
+
+.products li {
+  font-family: balooSemibold, sans-serif;
+  font-size: 32px;
+  list-style: none;
+  height: 110px;
+  margin-bottom: 5px;
+}
+
+/* Botones contador */
+.btnCount {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.btnPlus {
+  background-color: #C6DA20;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  border: none;
+  color: #00000090;
+  font-size: 34px;
+}
+
+.btnLess {
+  background-color: #DA1212;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  border: none;
+  color: #ffffff;
+  font-size: 34px;
+}
+
+.count {
+  font-family: balooSemibold, sans-serif;
+  font-size: 40px;
+  margin: 0;
+
 }

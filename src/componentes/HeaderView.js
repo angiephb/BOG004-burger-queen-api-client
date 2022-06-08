@@ -14,7 +14,7 @@ const HeaderView = () => {
         <main>
             <header className='headerview'>
                 <img src={logo} className='logoview' alt='logo' />
-                <button type='submit' onClick={(e) => handleBtnClick(e)}><i className='fa-solid fa-right-from-bracket fa-3x'></i></button>
+                <button className='btnOut' type='submit' onClick={(e) => handleBtnClick(e)}><i className='fa-solid fa-right-from-bracket fa-3x'></i></button>
             </header>
             <hr></hr>
         </main>
