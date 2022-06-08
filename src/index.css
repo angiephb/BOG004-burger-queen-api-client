@@ -115,9 +115,10 @@ hr {
   margin: 25px;
 
 }
+
 /* botones mesero */
 
-.btnWaiter{
+.btnWaiter {
   height: 85vh;
   display: flex;
   flex-direction: column;
@@ -154,18 +155,65 @@ hr {
   color: #91A900;
   margin-left: 20px;
 }
+/* formulario */
+.formMenu{
+  width: 100vw;
+}
+
+/* aqui esta el contenedor del menu */
+.containerMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+
+/* aqui esta ael contenedor del input */
+.containerInput {
+  display: flex;
+  justify-content: center
+}
+
+/* aqui esta los input menu */
+.inputCliente {
+  font-family: balooRegular, sans-serif;
+  font-size: 40px;
+  background-color: #FFD384;
+  color: #F08C00;
+  border: none;
+  margin: 10px;
+}
+
+.inputMesa {
+  font-family: balooRegular, sans-serif;
+  font-size: 40px;
+  color: #F08C00;
+  background-color: #FFD384;
+  font-size: 40px;
+  border: none;
+  width: 150px;
+  margin: 10px;
+}
+
+::placeholder {
+  font-family: balooRegular, sans-serif;
+  font-size: 40px;
+  color: #F08C00;
+  font-size: 40px;
+  text-align: center;
+}
 
 /* aqui esta los botones menu */
-.btnMenu{
+.btnMenu {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   margin: 25px;
   flex-direction: column;
-  width: 94vw;
+  width: 30vw;
 }
 
-.btn-menu{
+.btn-menu {
   width: 200px;
   height: 60px;
   padding: 6px 0px;
@@ -177,4 +225,20 @@ hr {
   background-color: #C6DA20;
   color: #00000080;
   margin: 15px;
+}
+
+/* lista productos */
+.products{
+  width: 350px;
+   text-align: center;
+}
+
+.products ul{
+  padding: 0;
+}
+
+.products li{
+  list-style: none;
+  line-height: 100%;
+  width: 20px;
 }
