@@ -3,13 +3,13 @@ import ButtonCount from './buttoncount';
 import ContainerSummary from './containersumary.js'
 
 const OrderWaiter = () => {
-
+    const [clientOrder, setClientOrder] = useState([])
     const [products, setProducts] = useState([])
     const [isLunch, setIsLunch] = useState(true)
     const [order, setOrder] = useState({
         clientName: '',
         tableNumber: '',
-        products: [],
+       
     })
     /* const [formValue, setFormValue] = useState({
 
@@ -53,9 +53,8 @@ const OrderWaiter = () => {
     const handleForm = (e, inputName) => {
         console.log('evento', e.target.value)
         setOrder(currentOrder => {
-            return ({ ...currentOrder, [inputName]: e.target.value})
+            return ({ ...currentOrder, [inputName]: e.target.value })
         })
-
     }
 
     return (
@@ -68,13 +67,12 @@ const OrderWaiter = () => {
                     </section>
                     <section>
                         <input type='text' className='inputMesa' placeholder='# Mesa' value={order.tableNumber}
-                            onChange={(e) => handleForm(e, 'tableNumber')}/>
+                            onChange={(e) => handleForm(e, 'tableNumber')} />
                     </section>
                 </section>
                 <section className='containerMenu'>
                     <section className='btnMenu'>
                         <section>
-
                             <button type="button" className="btn btn-menu" onClick={e => clickDesayuno(e)}>Desayuno</button>
                         </section>
 
@@ -86,7 +84,14 @@ const OrderWaiter = () => {
                         {/* aqui van los productos */}
                         <ul>
                             {products.map(item =>
-                                <li key={`item_${item.id}`}>{item.name}<ButtonCount /></li>
+                                <li key={`item_${item.id}`}> {item.name}
+                                    <ButtonCount
+                                        clientOrder={clientOrder}
+                                        productName={item.name}
+                                        productPrice={item.price}
+                                        setClientOrder={setClientOrder}
+                                        value={clientOrder.itemName}
+                                        onChange={(e) => handleForm(e, 'itemName')} /></li>
                             )}
                         </ul>
                     </section>
@@ -94,8 +99,10 @@ const OrderWaiter = () => {
             </div>
             <section className='containerSummary'>
                 <ContainerSummary
-                clientName={order.clientName}
-                tableNumber={order.tableNumber}/>
+                    clientName={order.clientName}
+                    tableNumber={order.tableNumber}
+                    clientOrder={clientOrder}
+                    />
             </section>
         </main >
     )
