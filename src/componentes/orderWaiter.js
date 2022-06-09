@@ -1,10 +1,19 @@
-import React, { useState } from "react";
-import ButtonCount from "./buttoncount";
+import React, { useState } from 'react';
+import ButtonCount from './buttoncount';
+import ContainerSummary from './containersumary.js'
 
 const OrderWaiter = () => {
 
     const [products, setProducts] = useState([])
     const [isLunch, setIsLunch] = useState(true)
+    const [order, setOrder] = useState({
+        clientName: '',
+        tableNumber: '',
+        products: [],
+    })
+    /* const [formValue, setFormValue] = useState({
+
+    }) */
 
     const getListProducts = () => {
         const url = 'http://localhost:8080';
@@ -41,15 +50,25 @@ const OrderWaiter = () => {
         getListProducts()
     }
 
+    const handleForm = (e, inputName) => {
+        console.log('evento', e.target.value)
+        setOrder(currentOrder => {
+            return ({ ...currentOrder, [inputName]: e.target.value})
+        })
+
+    }
+
     return (
         <main>
-            <form className='formMenu'>
+            <div className='formMenu'>
                 <section className='containerInput'>
                     <section>
-                        <input type='text' className='inputCliente' placeholder='Nombre del cliente' />
+                        <input type='text' className='inputCliente' placeholder='Nombre del cliente' value={order.clientName}
+                            onChange={(e) => handleForm(e, 'clientName')} />
                     </section>
                     <section>
-                        <input type='text' className='inputMesa' placeholder='# Mesa' />
+                        <input type='text' className='inputMesa' placeholder='# Mesa' value={order.tableNumber}
+                            onChange={(e) => handleForm(e, 'tableNumber')}/>
                     </section>
                 </section>
                 <section className='containerMenu'>
@@ -72,7 +91,12 @@ const OrderWaiter = () => {
                         </ul>
                     </section>
                 </section>
-            </form>
+            </div>
+            <section className='containerSummary'>
+                <ContainerSummary
+                clientName={order.clientName}
+                tableNumber={order.tableNumber}/>
+            </section>
         </main >
     )
 }

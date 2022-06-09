@@ -9,8 +9,7 @@ const Waiter = () => {
             </header>
             <section className='btnWaiter'>
                 <p className='gretting'>Hola Mesero, </p>
-                
-                <section>
+                 <section>
                     <OrderWaiter />
                 </section>
                 
