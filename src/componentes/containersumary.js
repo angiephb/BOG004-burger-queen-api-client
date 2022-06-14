@@ -1,7 +1,7 @@
 import React from "react";
 
-const ContainerSummary = ({ clientName, tableNumber, clientOrder }) => {
-    console.log('rrrrrr', clientOrder)
+const ContainerSummary = ({ clientName, tableNumber, clientOrder, totalOrder }) => {
+    console.log('nuevo client order', ...clientOrder)
     return (
         <section>
             <section className='containerClient'>
@@ -15,20 +15,22 @@ const ContainerSummary = ({ clientName, tableNumber, clientOrder }) => {
                     <h3>Producto</h3>
                     <ul>
                         {clientOrder.map(item =>
-                            <li key={`item_${item.idProduct}`}> {item.productName} </li> )}
+                            <li key={`item_${item.idProduct}`}> {item.productName} {item.cantidad}  </li> )} 
                     </ul>
-
                 </section>
 
                 <section>
                     <h3>Valor</h3>
-                    <p>{clientOrder.map(precio => precio.productPrice)}</p>
+                    <ul>
+                        {clientOrder.map(item =>
+                            <li key={`item_${item.idProduct}`}> {item.productPrice}</li> )} 
+                    </ul>
                 </section>
             </section>
             <hr></hr>
             <section className='total'>
-                <h3>Total:</h3>
-                <h3>$</h3>
+                <h3>Total:  </h3>
+                <h3>$ {totalOrder} </h3>
             </section>
         </section>
 

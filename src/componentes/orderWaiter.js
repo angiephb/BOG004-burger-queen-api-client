@@ -4,6 +4,7 @@ import ContainerSummary from './containersumary.js'
 
 const OrderWaiter = () => {
     const [clientOrder, setClientOrder] = useState([])
+    const [totalOrder, setTotalOrder] = useState(0)
     const [products, setProducts] = useState([])
     const [isLunch, setIsLunch] = useState(true)
     const [order, setOrder] = useState({
@@ -28,7 +29,7 @@ const OrderWaiter = () => {
             }
         }).then(res => res.json())
             .then(response => {
-                console.log('is lunch', isLunch)
+                //console.log('is lunch', isLunch)
                 if (isLunch) {
                     setProducts(response.filter(product => product.type === 'Desayuno'))
                 } else {
@@ -40,7 +41,7 @@ const OrderWaiter = () => {
 
     const clickDesayuno = (e) => {
         e.preventDefault()
-        console.log('desayuno')
+       // console.log('desayuno')
         setIsLunch(() => false)
         getListProducts()
     }
@@ -91,8 +92,9 @@ const OrderWaiter = () => {
                                         productPrice={item.price}
                                         idProduct={item.id}
                                         setClientOrder={setClientOrder}
-                                        value={clientOrder.itemName}
-                                        onChange={(e) => handleForm(e, 'itemName')} /></li>
+                                        setTotalOrder={setTotalOrder}
+                                        /* value={clientOrder.itemName}
+                                        onChange={(e) => handleForm(e, 'itemName')} */ /></li>
                             )}
                         </ul>
                     </section>
@@ -101,6 +103,7 @@ const OrderWaiter = () => {
             <section className='containerSummary'>
                 <ContainerSummary
                     clientName={order.clientName}
+                    totalOrder={totalOrder}
                     tableNumber={order.tableNumber}
                     clientOrder={clientOrder}
                     />
