@@ -4,6 +4,7 @@ import ContainerSummary from './containersumary.js'
 
 const OrderWaiter = () => {
     const [clientOrder, setClientOrder] = useState([])
+    const [totalOrder, setTotalOrder] = useState(0)
     const [products, setProducts] = useState([])
     const [isLunch, setIsLunch] = useState(true)
     const [order, setOrder] = useState({
@@ -91,6 +92,7 @@ const OrderWaiter = () => {
                                         productPrice={item.price}
                                         idProduct={item.id}
                                         setClientOrder={setClientOrder}
+                                        setTotalOrder={setTotalOrder}
                                         /* value={clientOrder.itemName}
                                         onChange={(e) => handleForm(e, 'itemName')} */ /></li>
                             )}
@@ -101,6 +103,7 @@ const OrderWaiter = () => {
             <section className='containerSummary'>
                 <ContainerSummary
                     clientName={order.clientName}
+                    totalOrder={totalOrder}
                     tableNumber={order.tableNumber}
                     clientOrder={clientOrder}
                     />

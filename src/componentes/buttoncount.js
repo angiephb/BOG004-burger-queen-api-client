@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, idProduct }) => {
+const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, idProduct, setTotalOrder }) => {
     const [count, setCount] = useState(0)
 
     const counterPlus = (e) => {
@@ -12,9 +12,9 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             productName,
             productPrice,
         })
-        multiply([...clientOrder])
-        // console.log('clientorder',clientOrder)
+        multiply([...clientOrder]) 
     }
+
     const counterLess = (e) => {
         e.preventDefault()
         setCount(count - 1)
@@ -25,15 +25,12 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             productPrice,
         })
         multiply([...clientOrder])
-        // console.log(clientOrder)
     }
 
     const addProduct = (foodObject) => {
-        // console.log('foodobject',foodObject)
         if (clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct)) {
             let findItem = clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct);
             findItem['cantidad'] = count + 1;
-            // console.log('find', findItem)
             setClientOrder([...clientOrder])
         } else {
             setClientOrder([...clientOrder, foodObject])
@@ -44,15 +41,17 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
         if (clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct)) {
             let findItem = clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct);
             findItem['cantidad'] = count - 1;
-            // console.log('find', findItem)
             setClientOrder([...clientOrder])
         } else {
             setClientOrder([...clientOrder, foodObject])
         }
     }
-    const multiply = (foodObject) => {
-        let price = foodObject.map(item => (item.productPrice) * (item.cantidad));
-        console.log('precio', price)   
+    const multiply = () => {    
+        let price = clientOrder.map(item => item.productPrice * item.cantidad);
+        let number = price.toString()
+        let int= parseInt(number)
+        console.log('enteros',int  )
+        setTotalOrder(int)
     }
 
     return (
