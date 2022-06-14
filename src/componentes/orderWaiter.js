@@ -28,7 +28,7 @@ const OrderWaiter = () => {
             }
         }).then(res => res.json())
             .then(response => {
-                console.log('is lunch', isLunch)
+                //console.log('is lunch', isLunch)
                 if (isLunch) {
                     setProducts(response.filter(product => product.type === 'Desayuno'))
                 } else {
@@ -40,7 +40,7 @@ const OrderWaiter = () => {
 
     const clickDesayuno = (e) => {
         e.preventDefault()
-        console.log('desayuno')
+       // console.log('desayuno')
         setIsLunch(() => false)
         getListProducts()
     }
@@ -91,8 +91,8 @@ const OrderWaiter = () => {
                                         productPrice={item.price}
                                         idProduct={item.id}
                                         setClientOrder={setClientOrder}
-                                        value={clientOrder.itemName}
-                                        onChange={(e) => handleForm(e, 'itemName')} /></li>
+                                        /* value={clientOrder.itemName}
+                                        onChange={(e) => handleForm(e, 'itemName')} */ /></li>
                             )}
                         </ul>
                     </section>

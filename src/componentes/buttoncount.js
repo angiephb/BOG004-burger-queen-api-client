@@ -1,49 +1,58 @@
 import React, { useState } from 'react'
 
-const ButtonCount = ({setClientOrder, productName, clientOrder, productPrice, idProduct}) => {
+const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, idProduct }) => {
     const [count, setCount] = useState(0)
-   
+
     const counterPlus = (e) => {
         e.preventDefault()
         setCount(count + 1)
-        console.log('soy contador de',productName,'y mi valor es',count)
-        setClientOrder(addProduct([...clientOrder,{
+        //console.log('soy contador de',productName,'y mi valor es',count)
+        addProduct({
             idProduct,
-            productName, 
+            productName,
             productPrice,
-        }]))
-
-        console.log('clientorder',clientOrder)
+        })
+        multiply([...clientOrder])
+        // console.log('clientorder',clientOrder)
     }
     const counterLess = (e) => {
         e.preventDefault()
         setCount(count - 1)
-        console.log('soy contador de',productName,'y mi valor es',count)
-        setClientOrder(remove(productName))
-        console.log(clientOrder)
+        // console.log('soy contador de',productName,'y mi valor es',count)
+        remove({
+            idProduct,
+            productName,
+            productPrice,
+        })
+        multiply([...clientOrder])
+        // console.log(clientOrder)
     }
 
-    const addProduct = (clientOrder) => {
-        if (clientOrder.find(({idProduct}) => idProduct === clientOrder.idProduct)) {
-            let findItem = clientOrder.findIndex(({idProduct}) => idProduct === clientOrder.idProduct);
-            clientOrder[findItem].cantidad++;
-        }else{
-            clientOrder.push({...clientOrder, cantidad:1 })
-            setClientOrder({...clientOrder, cantidad:1 })
+    const addProduct = (foodObject) => {
+        // console.log('foodobject',foodObject)
+        if (clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct)) {
+            let findItem = clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct);
+            findItem['cantidad'] = count + 1;
+            // console.log('find', findItem)
+            setClientOrder([...clientOrder])
+        } else {
+            setClientOrder([...clientOrder, foodObject])
         }
-        console.log('aquimas', [...clientOrder])
-        return [...clientOrder]
     }
-    
-    const remove = (item) =>{
-        clientOrder.map((element) => {
-            console.log('item', item)
-            if(element.productName === item){
-                clientOrder.splice(clientOrder.indexOf(element),1)
-            }
-        })
-        console.log('aqui', [...clientOrder])
-        return [...clientOrder]
+
+    const remove = (foodObject) => {
+        if (clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct)) {
+            let findItem = clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct);
+            findItem['cantidad'] = count - 1;
+            // console.log('find', findItem)
+            setClientOrder([...clientOrder])
+        } else {
+            setClientOrder([...clientOrder, foodObject])
+        }
+    }
+    const multiply = (foodObject) => {
+        let price = foodObject.map(item => (item.productPrice) * (item.cantidad));
+        console.log('precio', price)   
     }
 
     return (
