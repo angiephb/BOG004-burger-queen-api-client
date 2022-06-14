@@ -93,6 +93,7 @@ const OrderWaiter = () => {
                                         idProduct={item.id}
                                         setClientOrder={setClientOrder}
                                         setTotalOrder={setTotalOrder}
+                                        totalOrder={totalOrder}
                                         /* value={clientOrder.itemName}
                                         onChange={(e) => handleForm(e, 'itemName')} */ /></li>
                             )}

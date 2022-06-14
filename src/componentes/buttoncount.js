@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, idProduct, setTotalOrder }) => {
+const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, idProduct, setTotalOrder, totalOrder }) => {
     const [count, setCount] = useState(0)
 
     const counterPlus = (e) => {
@@ -11,6 +11,7 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             idProduct,
             productName,
             productPrice,
+            cantidad: 1,
         })
         multiply([...clientOrder]) 
     }
@@ -23,6 +24,7 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             idProduct,
             productName,
             productPrice,
+            cantidad: 1,
         })
         multiply([...clientOrder])
     }
@@ -46,12 +48,15 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             setClientOrder([...clientOrder, foodObject])
         }
     }
-    const multiply = () => {    
+    const multiply = () => {  
+        console.log('client', clientOrder)  
         let price = clientOrder.map(item => item.productPrice * item.cantidad);
-        let number = price.toString()
-        let int= parseInt(number)
-        console.log('enteros',int  )
-        setTotalOrder(int)
+        console.log('price', price)
+        let sum= price.reduce((acc, cur) => acc+cur, 0)
+        // let number = price.toString()
+        // let int= number.valueOf()
+        console.log('sumaa', sum )
+        setTotalOrder(sum)
     }
 
     return (
