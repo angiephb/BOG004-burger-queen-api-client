@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContainerSummary = ({ clientName, tableNumber, clientOrder, }) => {
+const ContainerSummary = ({ clientName, tableNumber, clientOrder, totalOrder }) => {
     console.log('nuevo client order', ...clientOrder)
     return (
         <section>
@@ -29,8 +29,8 @@ const ContainerSummary = ({ clientName, tableNumber, clientOrder, }) => {
             </section>
             <hr></hr>
             <section className='total'>
-                <h3>Total:</h3>
-                <h3>$</h3>
+                <h3>Total:  </h3>
+                <h3>$ {totalOrder} </h3>
             </section>
         </section>
 
