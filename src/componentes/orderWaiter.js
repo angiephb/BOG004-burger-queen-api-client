@@ -54,11 +54,6 @@ const OrderWaiter = () => {
         })
     }
 
-    /* const handleTotal = (tot) => {
-        console.log('hola total', tot)
-        return tot
-    } */
-
     return (
         <main>
             <div className='formMenu'>

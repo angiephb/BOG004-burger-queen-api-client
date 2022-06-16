@@ -1,4 +1,5 @@
 import HeaderView from "../../componentes/HeaderView.js";
+import OrderChef from '../../componentes/orderChef.js'
 
 const Chef = () => {
     return (
@@ -19,6 +20,9 @@ const Chef = () => {
                         <button type='button' className='btn btn-order' >Entregadas</button>
                     </section>
                 </section>
+            </section>
+            <section className='containerSummary'>
+                <OrderChef />
             </section>
         </main>
     );
