@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, idProduct, setTotalOrder, totalOrder }) => {
+const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, idProduct, setTotalOrder, totalOrder,type }) => {
     const [count, setCount] = useState(0)
 
     const counterPlus = (e) => {
@@ -12,12 +12,14 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             productName,
             productPrice,
             cantidad: 1,
+            type,
         })
         multiply({
             idProduct,
             productName,
             productPrice,
             cantidad: 1,
+            type,
         })
     }
 
@@ -30,12 +32,14 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             productName,
             productPrice,
             cantidad: 1,
+            type,
         })
         multiply({
             idProduct,
             productName,
             productPrice,
             cantidad: 1,
+            type,
         })
     }
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 const ContainerSummary = ({ clientName, tableNumber, clientOrder, totalOrder }) => {
-    console.log('nuevo client order', [...clientOrder])
+    
 
     return (
         <section>
