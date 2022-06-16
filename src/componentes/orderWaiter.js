@@ -10,11 +10,7 @@ const OrderWaiter = () => {
     const [order, setOrder] = useState({
         clientName: '',
         tableNumber: '',
-       
     })
-    /* const [formValue, setFormValue] = useState({
-
-    }) */
 
     const getListProducts = () => {
         const url = 'http://localhost:8080';
@@ -41,7 +37,7 @@ const OrderWaiter = () => {
 
     const clickDesayuno = (e) => {
         e.preventDefault()
-       // console.log('desayuno')
+        // console.log('desayuno')
         setIsLunch(() => false)
         getListProducts()
     }
@@ -57,6 +53,11 @@ const OrderWaiter = () => {
             return ({ ...currentOrder, [inputName]: e.target.value })
         })
     }
+
+    /* const handleTotal = (tot) => {
+        console.log('hola total', tot)
+        return tot
+    } */
 
     return (
         <main>
@@ -74,11 +75,11 @@ const OrderWaiter = () => {
                 <section className='containerMenu'>
                     <section className='btnMenu'>
                         <section>
-                            <button type="button" className="btn btn-menu" onClick={e => clickDesayuno(e)}>Desayuno</button>
+                            <button type='button' className='btn btn-menu' onClick={e => clickDesayuno(e)}>Desayuno</button>
                         </section>
 
                         <section>
-                            <button type="button" className="btn btn-menu" onClick={e => clickAlmuerzo(e)}>Almuerzo</button>
+                            <button type='button' className='btn btn-menu' onClick={e => clickAlmuerzo(e)}>Almuerzo</button>
                         </section>
                     </section>
                     <section className='products'>
@@ -92,7 +93,7 @@ const OrderWaiter = () => {
                                         productPrice={item.price}
                                         idProduct={item.id}
                                         setClientOrder={setClientOrder}
-                                        setTotalOrder={setTotalOrder}
+                                        setTotalOrder={/* handleTotal */ setTotalOrder}
                                         totalOrder={totalOrder}
                                         /* value={clientOrder.itemName}
                                         onChange={(e) => handleForm(e, 'itemName')} */ /></li>
@@ -107,7 +108,7 @@ const OrderWaiter = () => {
                     totalOrder={totalOrder}
                     tableNumber={order.tableNumber}
                     clientOrder={clientOrder}
-                    />
+                />
             </section>
         </main >
     )

@@ -13,7 +13,12 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             productPrice,
             cantidad: 1,
         })
-        multiply([...clientOrder]) 
+        multiply({
+            idProduct,
+            productName,
+            productPrice,
+            cantidad: 1,
+        })
     }
 
     const counterLess = (e) => {
@@ -26,16 +31,23 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             productPrice,
             cantidad: 1,
         })
-        multiply([...clientOrder])
+        multiply({
+            idProduct,
+            productName,
+            productPrice,
+            cantidad: 1,
+        })
     }
 
     const addProduct = (foodObject) => {
+        console.log('foodobject', foodObject)
         if (clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct)) {
             let findItem = clientOrder.find(({ idProduct }) => idProduct === foodObject.idProduct);
             findItem['cantidad'] = count + 1;
             setClientOrder([...clientOrder])
         } else {
             setClientOrder([...clientOrder, foodObject])
+
         }
     }
 
@@ -48,14 +60,12 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             setClientOrder([...clientOrder, foodObject])
         }
     }
-    const multiply = () => {  
-        console.log('client', clientOrder)  
-        let price = clientOrder.map(item => item.productPrice * item.cantidad);
-        console.log('price', price)
-        let sum= price.reduce((acc, cur) => acc+cur, 0)
-        // let number = price.toString()
-        // let int= number.valueOf()
-        console.log('sumaa', sum )
+    
+    const multiply = (foodObject) => {
+        const sameProduct = clientOrder.some(product => product.idProduct === foodObject.idProduct)
+        const newArr = sameProduct ? [...clientOrder] : [...clientOrder, foodObject]
+        let price = newArr.map(item => item.productPrice * item.cantidad);
+        let sum = price.reduce((acc, cur) => acc + cur, 0)
         setTotalOrder(sum)
     }
 
@@ -66,9 +76,6 @@ const ButtonCount = ({ setClientOrder, productName, clientOrder, productPrice, i
             <p className='count'>{count}</p>
             <button className='btnLess' onClick={(e) => counterLess(e)}><i className='fa-solid fa-minus'></i></button>
         </section>
-
-
-
     )
 }
 
