@@ -1,63 +1,8 @@
-import React, { useState } from 'react';
 import ButtonCount from './buttoncount';
 import ContainerSummary from './containersumary.js'
 
-const OrderWaiter = () => {
-    const [clientOrder, setClientOrder] = useState([])
-    const [totalOrder, setTotalOrder] = useState(0)
-    const [products, setProducts] = useState([])
-    const [isLunch, setIsLunch] = useState(true)
-    const [order, setOrder] = useState({
-        clientName: '',
-        tableNumber: '',
-    })
-
-    const getListProducts = () => {
-        const url = 'http://localhost:8080';
-        const token = localStorage.getItem('Token:')
-
-        fetch(url + '/products', {
-            method: 'GET', // or 'PUT'
-            body: JSON.stringify(), // data can be `string` or {object}!
-            headers: {
-                'Content-Type': 'application/json',
-                'authorization': 'Bearer ' + token,
-            }
-        }).then(res => res.json())
-            .then(response => {
-                //console.log('is lunch', isLunch)
-                if (isLunch) {
-                    setProducts(response.filter(product => product.type === 'Desayuno'))
-                } else {
-                    setProducts(response.filter(product => product.type === 'Almuerzo'))
-                }
-            })
-            .catch(error => console.error('Error:', error))
-    }
-
-    const clickDesayuno = (e) => {
-        e.preventDefault()
-        // console.log('desayuno')
-        setIsLunch(() => false)
-        getListProducts()
-    }
-    const clickAlmuerzo = (e) => {
-        e.preventDefault()
-        setIsLunch(true)
-        getListProducts()
-    }
-
-    const handleForm = (e, inputName) => {
-        console.log('evento', e.target.value)
-        setOrder(currentOrder => {
-            return ({ ...currentOrder, [inputName]: e.target.value })
-        })
-    }
-
-    /* const handleTotal = (tot) => {
-        console.log('hola total', tot)
-        return tot
-    } */
+const OrderWaiter = ({ clientOrder, setClientOrder, totalOrder, setTotalOrder,
+    products, order, clickAlmuerzo, clickDesayuno, handleForm }) => {
 
     return (
         <main>
@@ -95,6 +40,7 @@ const OrderWaiter = () => {
                                         setClientOrder={setClientOrder}
                                         setTotalOrder={/* handleTotal */ setTotalOrder}
                                         totalOrder={totalOrder}
+                                        type={item.type}
                                         /* value={clientOrder.itemName}
                                         onChange={(e) => handleForm(e, 'itemName')} */ /></li>
                             )}
