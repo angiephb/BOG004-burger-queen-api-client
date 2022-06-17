@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import HeaderView from "../../componentes/HeaderView.js";
 import OrderWaiter from "../../componentes/orderWaiter.js";
 
 const Waiter = () => {
-
+    const Navigate = useNavigate()
     const [clientOrder, setClientOrder] = useState([])
     const [totalOrder, setTotalOrder] = useState(0)
     const [products, setProducts] = useState([])
@@ -55,32 +56,33 @@ const Waiter = () => {
             return ({ ...currentOrder, [inputName]: e.target.value })
         })
     }
-
-    const sendOrder = (e) => {
-        e.preventDefault()
+    
+    const sendOrder = () => {
         const url = 'http://localhost:8080';
         const token = localStorage.getItem('Token:')
-        setClientOrder(currentOrder=>{
-         return currentOrder.map(product=>{
+        const newArr = () => {
+            return clientOrder.map(product => {
                 return ({
-                    qty:product.cantidad,
-                        product: {
-                            id: product.idProduct,
-                            name: product.productName,
-                            price: product.productPrice,
-                            image: '',
-                            type: product.type,
-                            dateEntry: new Date()
-                        }
+                    qty: product.qty,
+                    product: {
+                        id: product.idProduct,
+                        name: product.name,
+                        price: product.productPrice,
+                        image: '',
+                        type: product.type,
+                        dateEntry: new Date()
+                    }
                 })
             })
-        })
+
+        }
+
         fetch(url + '/orders', {
             method: 'POST', // or 'PUT'
             body: JSON.stringify({
                 userId: '',
                 client: order.clientName,
-                products: clientOrder,
+                products: newArr(),
                 status: 'pending',
                 dateEntry: new Date()
             }), // data can be `string` or {object}!
@@ -88,7 +90,11 @@ const Waiter = () => {
                 'Content-Type': 'application/json',
                 'authorization': 'Bearer ' + token,
             }
-        }).then(res => console.log(res.json()))
+        }).then(res => res.json())
+            .then(response => {
+                console.log('response', response)
+            }).catch(error => console.error('Error:', error))
+        window.location.reload()
     }
 
     return (
