@@ -34,7 +34,7 @@ const OrderWaiter = ({ clientOrder, setClientOrder, totalOrder, setTotalOrder,
                                 <li key={`item_${item.id}`}> {item.name}
                                     <ButtonCount
                                         clientOrder={clientOrder}
-                                        productName={item.name}
+                                        name={item.name}
                                         productPrice={item.price}
                                         idProduct={item.id}
                                         setClientOrder={setClientOrder}

@@ -16,7 +16,7 @@ const ContainerSummary = ({ clientName, tableNumber, clientOrder, totalOrder }) 
                     <h3>Producto</h3>
                     <ul>
                         {clientOrder.map(item =>
-                            <li key={`item_${item.idProduct}`}> {item.productName} {item.cantidad}  </li>)}
+                            <li key={`item_${item.idProduct}`}> {item.name} {item.qty}  </li>)}
                     </ul>
                 </section>
 
@@ -24,7 +24,7 @@ const ContainerSummary = ({ clientName, tableNumber, clientOrder, totalOrder }) 
                     <h3>Valor</h3>
                     <ul>
                         {clientOrder.map(item =>
-                            <li key={`item_${item.idProduct}`}> {item.productPrice * item.cantidad}</li>)}
+                            <li key={`item_${item.idProduct}`}> {item.productPrice * item.qty}</li>)}
                     </ul>
                 </section>
             </section>
