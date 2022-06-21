@@ -60,20 +60,22 @@ const Formulario = () => {
       <form onSubmit={handleSubmit(submit)} className='form'>
 
         <div className='row mb-5'>
-          <label className='col-sm-8 col-form-label'>Usuario</label>
+          <label htmlFor='inputEmail3' className='col-sm-8 col-form-label'>Usuario</label>
           <div className='col-sm-8'>
             <input
               type='email'
               name='usuario'
               className='form-control'
               id='inputEmail3'
+              placeholder='Ingresa tu e-mail'
+              ref={register}
+              data-testid='login-input-email'
               {...register('Usuario', { required: true, pattern: patterns.mail })}
             />
             {errors.Usuario?.type === 'required' && <p className='fail'>{errorMsj.req}</p>}
             {errors.Usuario?.type === 'pattern' && <p className='fail'>{errorMsj.mail}</p>}
           </div>
         </div>
-
         <div className='row mb-5'>
           <label className='col-sm-8 col-form-label'>Contraseña</label>
           <div className='col-sm-8'>
@@ -81,6 +83,7 @@ const Formulario = () => {
               type='password'
               className='form-control'
               id='inputPassword3'
+              placeholder='Ingresa tu contraseña'
               {...register('Contraseña', { required: true, maxLength: 6, pattern: patterns.password })}
             />
             {errors.Contraseña?.type === 'required' && <p className='fail'>{errorMsj.req}</p>}
