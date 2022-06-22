@@ -4,16 +4,19 @@ import Header from "../header/header.js";
 import { useNavigate } from "react-router-dom";
 
 const Formulario = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [rol, setRol] = useState('');
-  console.log(rol);
+  const [email, setEmail] = useState('');
+  const [passwords, setPasswords] = useState('');
 
   const submit = (data) => {
+
     const user = {
       email: data.Usuario,
       password: data.Contraseña
     }
+
     const url = 'http://localhost:8080';
 
     fetch(url + '/login', {
@@ -29,15 +32,15 @@ const Formulario = () => {
         // console.log('ey', response.user.roles);
         if (response.user.roles.admin && rol === 'Administrador') {
           localStorage.setItem('rol', 'admin')
-          Navigate('/admin')
+          navigate('/admin')
         }
         if (response.user.roles.mesero && rol === 'Mesero') {
           localStorage.setItem('rol', 'waiter')
-          Navigate('/waiter')
+          navigate('/waiter')
         }
         if (response.user.roles.cocina && rol ==='Cocina') {
           localStorage.setItem('rol', 'chef')
-          Navigate('/chef')
+          navigate('/chef')
         }
       })
   }
@@ -67,12 +70,13 @@ const Formulario = () => {
               name='usuario'
               className='form-control'
               id='inputEmail3'
-              placeholder='Ingresa tu e-mail'
-              ref={register}
+              // placeholder='usuario'
+              value={email}
               data-testid='login-input-email'
               {...register('Usuario', { required: true, pattern: patterns.mail })}
+              onChange={e => {setEmail(e.target.value)}}
             />
-            {errors.Usuario?.type === 'required' && <p className='fail'>{errorMsj.req}</p>}
+            {errors.Usuario?.type === 'required' && <p className='fail' data-testid='login-errormsj'>{errorMsj.req}</p>}
             {errors.Usuario?.type === 'pattern' && <p className='fail'>{errorMsj.mail}</p>}
           </div>
         </div>
@@ -83,8 +87,11 @@ const Formulario = () => {
               type='password'
               className='form-control'
               id='inputPassword3'
-              placeholder='Ingresa tu contraseña'
+              // placeholder='contraseña'
+              value={passwords}
+              data-testid='login-input-pass'
               {...register('Contraseña', { required: true, maxLength: 6, pattern: patterns.password })}
+              onChange={e => {setPasswords(e.target.value)}}
             />
             {errors.Contraseña?.type === 'required' && <p className='fail'>{errorMsj.req}</p>}
             {errors.Contraseña?.type === 'maxLength' && <p className='fail'>{errorMsj.passwordLength}</p>}
