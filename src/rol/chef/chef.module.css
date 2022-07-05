@@ -1,0 +1,84 @@
+/* aqui esta la vista chef */
+
+/* aqui esta los botones ordenes  */
+.containerOrders {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: stretch;
+  }
+  
+  .btnOrders {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 90vw;
+  }
+  .btn-order {
+    width: 200px;
+    height: 60px;
+    padding: 6px 0px;
+    border-radius: 60px;
+    text-align: center;
+    font-size: 35px;
+    font-family: balooSemibold, sans-serif;
+    line-height: 1.42857;
+    background-color: #C6DA20;
+    color: #00000080;
+    margin: 15px;
+  }
+  
+  .btn-order:hover{
+    background-color: #C6DA2020;
+    color: #91A900;
+    border: 3px solid #91A900;
+    
+  }
+  
+  /* aqui esta el componente del cronometro  */
+  
+  .timer{
+    background-color: transparent;
+    border-radius: 34px;
+    border: none;
+    color: #000000;
+    font-size: 50px;
+  }
+  .containerTimer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+  }
+  
+  .containerImg{
+    margin: 0px 10px;
+  }
+  
+  .containerBtns {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+  }
+  
+  .containerTime{
+    color:#000000;
+    margin: 0px 15px;
+    font-family: balooSemibold, sans-serif;
+    font-size: 20px;
+   /*  display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+  }
+  .time{
+    display: inline-block;
+    width: 80px;
+    font-size: 50px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+  
+  }

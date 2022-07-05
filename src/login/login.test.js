@@ -5,7 +5,8 @@ import Formulario from './login.js'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
 
-it('formulario componente', async () => {
+
+test('formulario componente', async () => {
     const history = createMemoryHistory()
     /* const { debug} = */render(
         <Router location={history.location} navigator={history}>
@@ -24,6 +25,5 @@ it('formulario componente', async () => {
     // console.log(errmsj.textContent)
     expect(errmsj.textContent).toBe('Este campo no puede estar vacio')
     // screen.getByTestId('ddd')
-
-
 })
+

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const ButtonCount = ({ setClientOrder, name, clientOrder, productPrice, idProduct, setTotalOrder, totalOrder,type }) => {
+const ButtonCount = ({ setClientOrder, name, clientOrder, productPrice, idProduct, setTotalOrder,type }) => {
     const [count, setCount] = useState(0)
 
     const counterPlus = (e) => {
@@ -75,7 +75,6 @@ const ButtonCount = ({ setClientOrder, name, clientOrder, productPrice, idProduc
     }
 
     return (
-
         <section className='btnCount'>
             <button className='btnPlus' onClick={(e) => counterPlus(e)}><i className='fa-solid fa-plus'></i></button>
             <p className='count'>{count}</p>

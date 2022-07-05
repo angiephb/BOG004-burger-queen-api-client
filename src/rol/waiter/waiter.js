@@ -80,7 +80,7 @@ const Waiter = () => {
         fetch(url + '/orders', {
             method: 'POST', // or 'PUT'
             body: JSON.stringify({
-                userId: '',
+                userId: order.tableNumber,
                 client: order.clientName,
                 products: newArr(),
                 status: 'pending',
