@@ -1,84 +1,162 @@
 /* aqui esta la vista chef */
+.gretting {
+  font-size: 40px;
+  font-family: balooSemibold, sans-serif;
+  margin: 25px 25px 0 25px;
+
+}
 
 /* aqui esta los botones ordenes  */
 .containerOrders {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 20px;
-    align-items: stretch;
-  }
-  
-  .btnOrders {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    flex-direction: row;
-    width: 90vw;
-  }
-  .btn-order {
-    width: 200px;
-    height: 60px;
-    padding: 6px 0px;
-    border-radius: 60px;
-    text-align: center;
-    font-size: 35px;
-    font-family: balooSemibold, sans-serif;
-    line-height: 1.42857;
-    background-color: #C6DA20;
-    color: #00000080;
-    margin: 15px;
-  }
-  
-  .btn-order:hover{
-    background-color: #C6DA2020;
-    color: #91A900;
-    border: 3px solid #91A900;
-    
-  }
-  
-  /* aqui esta el componente del cronometro  */
-  
-  .timer{
-    background-color: transparent;
-    border-radius: 34px;
-    border: none;
-    color: #000000;
-    font-size: 50px;
-  }
-  .containerTimer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: baseline;
-  }
-  
-  .containerImg{
-    margin: 0px 10px;
-  }
-  
-  .containerBtns {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-  }
-  
-  .containerTime{
-    color:#000000;
-    margin: 0px 15px;
-    font-family: balooSemibold, sans-serif;
-    font-size: 20px;
-   /*  display:flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.btnOrders {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 90vw;
+}
+
+.btnorder {
+  width: 200px;
+  height: 60px;
+  padding: 6px 0px;
+  border-radius: 60px;
+  text-align: center;
+  font-size: 35px;
+  font-family: balooSemibold, sans-serif;
+  line-height: 1.42857;
+  background-color: #C6DA20;
+  color: #00000080;
+  margin: 15px;
+  border: none;
+}
+
+.btnorder:hover {
+  background-color: #C6DA2020;
+  color: #91A900;
+  border: 3px solid #91A900;
+}
+
+/* aqui esta el componente del cronometro  */
+.timer {
+  background-color: transparent;
+  border-radius: 34px;
+  border: none;
+  color: #000000;
+  font-size: 50px;
+}
+
+.containerTimer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.containerImg {
+  margin: 0px 10px;
+}
+
+.containerBtns {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.containerTime {
+  color: #000000;
+  margin: 0px 15px;
+  font-family: balooSemibold, sans-serif;
+  font-size: 20px;
+  /*  display:flex;
     flex-direction: row;
     justify-content: center;
     align-items: center; */
-  }
-  .time{
-    display: inline-block;
-    width: 80px;
-    font-size: 50px;
-    text-align: center;
-    border: none;
-    background-color: transparent;
-  
-  }
+}
+
+.time {
+  display: inline-block;
+  width: 80px;
+  font-size: 50px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  margin: 0;
+
+}
+
+.controlButtons {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+}
+
+
+.btnStart {
+  color: #000000;
+  font-family: balooSemibold, sans-serif;
+  font-size: 36px;
+  text-align: left;
+  padding: 5px 12px 5px 18px;
+  background-color: #C6DA20;
+  width: 170px;
+  height: 55px;
+  border-radius: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.btnPause {
+  color: #ffffff;
+  font-family: balooSemibold, sans-serif;
+  font-size: 36px;
+  text-align: left;
+  padding: 5px 18px 5px 12px;
+  background-color: #DA1212;
+  width: 140px;
+  height: 55px;
+  border-radius: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+
+
+
+
+/* aqui esta el resumen de las ordenes */
+.containerAll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.containerSummary {
+  background-color: #FFD38440;
+  border-radius: 20px;
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+}
+
+.orderList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

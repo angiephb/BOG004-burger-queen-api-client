@@ -1,33 +1,34 @@
 import ButtonCount from './buttoncount';
 import ContainerSummary from './containersumary.js'
+import styles from '../rol/waiter/waiter.module.css'
 
 const OrderWaiter = ({ clientOrder, setClientOrder, totalOrder, setTotalOrder,
     products, order, clickAlmuerzo, clickDesayuno, handleForm }) => {
 
     return (
-        <main>
-            <div className='formMenu'>
-                <section className='containerInput'>
+        <main className={styles.containerAll}>
+            <div className={styles.formMenu}>
+                <section className={styles.containerInput}>
                     <section>
-                        <input type='text' className='inputCliente' placeholder='Nombre del cliente' value={order.clientName}
+                        <input type='text' className={styles.inputCliente} placeholder='Nombre del cliente' value={order.clientName}
                             onChange={(e) => handleForm(e, 'clientName')} />
                     </section>
                     <section>
-                        <input type='text' className='inputMesa' placeholder='# Mesa' value={order.tableNumber}
+                        <input type='text' className={styles.inputMesa} placeholder='# Mesa' value={order.tableNumber}
                             onChange={(e) => handleForm(e, 'tableNumber')} />
                     </section>
                 </section>
-                <section className='containerMenu'>
-                    <section className='btnMenu'>
+                <section className={styles.containerMenu}>
+                    <section className={styles.btnMenu}>
                         <section>
-                            <button type='button' className='btn btn-menu' onClick={e => clickDesayuno(e)}>Desayuno</button>
+                            <button type='button' className={styles.btnmenu} onClick={e => clickDesayuno(e)}>Desayuno</button>
                         </section>
 
                         <section>
-                            <button type='button' className='btn btn-menu' onClick={e => clickAlmuerzo(e)}>Almuerzo</button>
+                            <button type='button' className={styles.btnmenu} onClick={e => clickAlmuerzo(e)}>Almuerzo</button>
                         </section>
                     </section>
-                    <section className='products'>
+                    <section className={styles.products}>
                         {/* aqui van los productos */}
                         <ul>
                             {products.map(item =>
@@ -48,7 +49,7 @@ const OrderWaiter = ({ clientOrder, setClientOrder, totalOrder, setTotalOrder,
                     </section>
                 </section>
             </div>
-            <section className='containerSummary'>
+            <section className={styles.containerSummary}>
                 <ContainerSummary
                     clientName={order.clientName}
                     totalOrder={totalOrder}

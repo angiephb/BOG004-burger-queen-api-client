@@ -3,9 +3,9 @@ import styles from './header.module.css'
 
 const Header = () => {
     return (
-        <div className='header-logo'>
+        <div className={styles.headerlogo}>
             <header>
-                <img src={logo} className={styles.App-logo} alt='logo' />
+                <img src={logo} className={styles.Applogo} alt='logo' />
             </header>
         </div>
     );

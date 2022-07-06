@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import HeaderView from "../../componentes/HeaderView.js";
 import OrderChef from '../../componentes/orderChef.js'
+import styles from './chef.module.css'
 
 const Chef = () => {
     const [order, setOrder] = useState([])
@@ -35,22 +36,23 @@ const Chef = () => {
                 <HeaderView />
             </header>
             <section>
-                <p className='gretting'>Hola Chef, </p>
+                <p className={styles.gretting}>Hola Chef, </p>
             </section>
-            <section className='containerOrders'>
-                <section className='btnOrders'>
+            <section className={styles.containerOrders}>
+                <section className={styles.btnOrders}>
                     <section>
-                        <button type='button' className='btn btn-order' onClick={e => clickPending(e)} >Pendientes</button>
+                        <button type='button' className={styles.btnorder} onClick={e => clickPending(e)} >Pendientes</button>
                     </section>
 
                     <section>
-                        <button type='button' className='btn btn-order' >Entregadas</button>
+                        <button type='button' className={styles.btnorder} >Entregadas</button>
                     </section>
                 </section>
             </section>
+            <section className={styles.containerAll}>
             {order.map(item =>
-                <section className='containerSummary'>
-                    <ul>
+                <section className={styles.containerSummary}>
+                    <ul className={styles.orderList}>
                         <li key={`item_${item.userId}`}>
                             <OrderChef
                                 order={item}
@@ -61,6 +63,7 @@ const Chef = () => {
                     </ul>
                 </section>
             )}
+            </section>
         </main>
     );
 

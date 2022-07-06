@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import styles from '../rol/waiter/waiter.module.css'
+
 
 const ButtonCount = ({ setClientOrder, name, clientOrder, productPrice, idProduct, setTotalOrder,type }) => {
     const [count, setCount] = useState(0)
@@ -75,10 +77,10 @@ const ButtonCount = ({ setClientOrder, name, clientOrder, productPrice, idProduc
     }
 
     return (
-        <section className='btnCount'>
-            <button className='btnPlus' onClick={(e) => counterPlus(e)}><i className='fa-solid fa-plus'></i></button>
-            <p className='count'>{count}</p>
-            <button className='btnLess' onClick={(e) => counterLess(e)}><i className='fa-solid fa-minus'></i></button>
+        <section className={styles.btnCount}>
+            <button className={styles.btnPlus} onClick={(e) => counterPlus(e)}><i className='fa-solid fa-plus'></i></button>
+            <p className={styles.count}>{count}</p>
+            <button className={styles.btnLess} onClick={(e) => counterLess(e)}><i className='fa-solid fa-minus'></i></button>
         </section>
     )
 }

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HeaderView from "../../componentes/HeaderView.js";
 import OrderWaiter from "../../componentes/orderWaiter.js";
+import styles from './waiter.module.css'
+
 
 const Waiter = () => {
     const Navigate = useNavigate()
@@ -102,8 +104,8 @@ const Waiter = () => {
             <header>
                 <HeaderView />
             </header>
-            <section className='btnWaiter'>
-                <p className='gretting'>Hola Mesero, </p>
+            <section className={styles.btnWaiter}>
+                <p className={styles.gretting}>Hola Mesero, </p>
                 <section>
                     <OrderWaiter
                         clientOrder={clientOrder}
@@ -118,16 +120,16 @@ const Waiter = () => {
                     />
                 </section>
 
-                <aside className='orderbtn'>
-                    <div className='btns'>
-                        <button type="button" onClick={sendOrder} className='btn btn-default btn-circle'><i className='fa-solid fa-plus'></i>
+                <aside className={styles.orderbtn}>
+                    <div className={styles.btns}>
+                        <button type="button" onClick={sendOrder} className={styles.btncircle}><i className='fa-solid fa-plus'></i>
                         </button>
-                        <label className="labelOrder">Enviar Orden</label>
+                        <label className={styles.labelOrder}>Enviar Orden</label>
                     </div>
-                    <div className='btns'>
-                        <button type="button" className='btn btn-default btn-circle'><i className='fa-solid fa-clipboard-list'></i>
+                    <div className={styles.btns}>
+                        <button type="button" className={styles.btncircle}><i className='fa-solid fa-clipboard-list'></i>
                         </button>
-                        <label className='labelOrder'>Tus Ordenes</label>
+                        <label className={styles.labelOrder}>Tus Ordenes</label>
                     </div>
                 </aside>
             </section>

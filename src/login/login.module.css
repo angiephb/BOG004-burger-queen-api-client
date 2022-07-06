@@ -1,0 +1,64 @@
+/* aqui esta la vista login */
+.viewlogin {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+/* formulario login */
+.form {
+    padding: 100px 0px 100px 0px;
+    font-family: balooSemibold, sans-serif;
+}
+
+.formcontrol {
+    border: 0;
+    border-radius: 60px;
+    background-color: #FFD384;
+    font-size: 30px;
+    width: 65vw;
+    text-align: center;
+    height: 50px;
+}
+
+.formselect {
+    border: 0;
+    border-radius: 60px;
+    background-color: #FFD384;
+    font-size: 30px;
+    text-align: center;
+    background-size: 30px 30px;
+    width: 65vw;
+}
+
+.formselect option {
+    font-size: 15px;
+    width: 50px;
+}
+
+.btnL {
+    text-align: center;
+}
+
+.btnlogin {
+    border: none;
+    border-radius: 60px;
+    background-color: #C6DA20;
+    color: #00000095;
+    font-size: 35px;
+    margin-top: 50px;
+    width: 40vw;
+}
+
+.fail {
+    color: #DA1212;
+    font-family: balooRegular, sans-serif;
+    font-size: 25px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+@media screen and (min-width: 1000px) {
+    .form{
+    }
+}

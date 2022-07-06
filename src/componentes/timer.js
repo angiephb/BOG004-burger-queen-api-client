@@ -23,7 +23,6 @@ const Timer = () => {
     }, [active, paused]);
 
     const Start = () => {
-        console.log('hola')
         setActive(true);
         setPaused(false);
     }
@@ -38,10 +37,10 @@ const Timer = () => {
       } */
 
     const btnStart = (
-        <section className="btn btn-one btn-start" onClick={Start}>Inicio</section>
+        <section className={styles.btnStart} onClick={Start}>Inicio <i className='fa-solid fa-circle' ></i></section>
     );
     const btnActive = (
-        <section className='pause' onClick={Pause}>Fin</section>
+        <section className={styles.btnPause} onClick={Pause}>Fin <i className='fa-solid fa-circle' ></i></section>
         /*  <section className='btnsActive'>
              {<section className='finish' onClick={Reset}>Reset</section>}
              <section className='pause' onClick={Pause}>Fin</section>
@@ -67,10 +66,8 @@ const Timer = () => {
                     {('0' + ((time / 10) % 100)).slice(-2)}
                 </p> */}
             </section>
-            <section>
-                <section className="Control-Buttons">
+            <section className={styles.controlButtons}>
                     <section>{active ? btnActive : btnStart}</section>
-                </section>
             </section>
         </section>
     );

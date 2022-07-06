@@ -1,0 +1,304 @@
+/* aqui estan la vista mesero */
+.gretting {
+    font-size: 40px;
+    font-family: balooSemibold, sans-serif;
+    margin: 25px 25px 0 25px;
+}
+
+/* botones mesero */
+.btnWaiter {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* aqui esta el boton nueva orden */
+.orderbtn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 25px;
+    flex-direction: row;
+    width: 94vw;
+}
+
+.btncircle {
+    width: 70px;
+    height: 70px;
+    padding: 6px 0px;
+    border-radius: 60px;
+    text-align: center;
+    font-size: 45px;
+    font-family: balooSemibold, sans-serif;
+    line-height: 1.42857;
+    background-color: #C6DA20;
+    color: #00000095;
+    border: none;
+    margin-bottom: 25px;
+}
+
+.labelOrder {
+    font-family: balooRegular, sans-serif;
+    font-size: 30px;
+    color: #91A900;
+    margin-left: 20px;
+}
+
+/* formulario */
+.formMenu {
+    width: 100vw;
+}
+
+/* aqui esta el contenedor del menu */
+.containerMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: stretch;
+}
+
+/* aqui esta ael contenedor del input */
+.containerInput {
+    display: flex;
+    justify-content: center
+}
+
+/* aqui esta los input menu */
+.inputCliente {
+    font-family: balooRegular, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    background-color: #FFD384;
+    color: #F08C00;
+    border: none;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.inputCliente:hover {
+    background-color: #FFD38470;
+    border: 2px solid #FFD384;
+}
+
+.inputMesa {
+    font-family: balooRegular, sans-serif;
+    font-size: 40px;
+    color: #F08C00;
+    background-color: #FFD384;
+    font-size: 40px;
+    border: none;
+    width: 150px;
+    margin-left: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.inputMesa:hover {
+    background-color: #FFD38470;
+    border: 2px solid #FFD384;
+}
+
+::placeholder {
+    font-family: balooRegular, sans-serif;
+    font-size: 40px;
+    color: #F08C00;
+    font-size: 40px;
+    text-align: center;
+}
+
+/* aqui esta los botones menu */
+.btnMenu {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 30vw;
+}
+
+.btnmenu {
+    width: 200px;
+    height: 60px;
+    padding: 6px 0px;
+    border-radius: 60px;
+    text-align: center;
+    font-size: 35px;
+    font-family: balooSemibold, sans-serif;
+    line-height: 1.42857;
+    background-color: #C6DA20;
+    color: #00000095;
+    margin: 15px;
+    border: none;
+}
+
+.btnmenu:hover {
+    background-color: #C6DA2020;
+    color: #91A900;
+    border: 3px solid #91A900;
+
+}
+
+/* lista productos */
+.products {
+    width: 410px;
+    text-align: center;
+    padding: 10px;
+}
+
+.products ul {
+    padding: 0;
+    margin: 0;
+}
+
+.products li {
+    font-family: balooSemibold, sans-serif;
+    font-size: 30px;
+    list-style: none;
+    height: 100px;
+    margin-bottom: 5px;
+}
+
+/* Botones contador */
+.btnCount {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.btnPlus {
+    background-color: #C6DA20;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    color: #00000090;
+    font-size: 23px;
+}
+
+.btnLess {
+    background-color: #DA1212;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    color: #ffffff;
+    font-size: 23px;
+}
+
+.count {
+    font-family: balooSemibold, sans-serif;
+    font-size: 35px;
+    margin: 0;
+}
+
+/* aqui esta el resumen de la orden */
+
+.containerSummary {
+    background-color: #FFD38440;
+    border-radius: 20px;
+    width: 95vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+}
+
+.containerAll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerClient {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.containerClient h2 {
+    color: #DA1212;
+    text-align: center;
+    font-family: balooSemibold, sans-serif;
+    font-size: 40px;
+}
+
+.dataClient {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.dataClient p {
+    color: #000000;
+    font-family: balooSemibold, sans-serif;
+    font-size: 30px;
+    margin: 0;
+}
+
+.dataClient p span {
+    font-family: balooRegular, sans-serif;
+    font-size: 28px;
+    text-decoration: underline #00000050;
+    text-decoration-thickness: 5px;
+    text-decoration-style: dotted;
+}
+
+.containerAbstract {
+    display: flex;
+    font-family: balooSemibold, sans-serif;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.containerAbstract h3 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.productList {
+    font-family: balooRegular, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.productValue {
+    font-family: balooRegular, sans-serif;
+    font-size: 30px;
+    text-align: right;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.total {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: baseline;
+    margin-right: 61px;
+}
+
+.total h3 {
+    font-family: balooSemibold, sans-serif;
+    font-size: 30px;
+    margin: 0;
+}
+
+.total p {
+    color: #DA1212;
+    font-family: balooSemibold, sans-serif;
+    font-size: 30px;
+    text-align: right;
+    margin: 0;
+
+}

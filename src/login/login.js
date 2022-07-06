@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import Header from "../header/header.js";
 import { useNavigate } from "react-router-dom";
+import styles from './login.module.css'
 
 const Formulario = () => {
   const navigate = useNavigate();
@@ -56,11 +57,11 @@ const Formulario = () => {
   };
 
   return (
-    <div className='view-login'>
+    <div className={styles.viewlogin}>
       <div>
         <Header />
       </div>
-      <form onSubmit={handleSubmit(submit)} className='form'>
+      <form onSubmit={handleSubmit(submit)} className={styles.form}>
 
         <div className='row mb-5'>
           <label htmlFor='inputEmail3' className='col-sm-8 col-form-label'>Usuario</label>
@@ -68,7 +69,7 @@ const Formulario = () => {
             <input
               type='email'
               name='usuario'
-              className='form-control'
+              className={styles.formcontrol}
               id='inputEmail3'
               // placeholder='usuario'
               value={email}
@@ -76,8 +77,8 @@ const Formulario = () => {
               {...register('Usuario', { required: true, pattern: patterns.mail })}
               onChange={e => {setEmail(e.target.value)}}
             />
-            {errors.Usuario?.type === 'required' && <p className='fail' data-testid='login-errormsj'>{errorMsj.req}</p>}
-            {errors.Usuario?.type === 'pattern' && <p className='fail'>{errorMsj.mail}</p>}
+            {errors.Usuario?.type === 'required' && <p className={styles.fail} data-testid='login-errormsj'>{errorMsj.req}</p>}
+            {errors.Usuario?.type === 'pattern' && <p className={styles.fail}>{errorMsj.mail}</p>}
           </div>
         </div>
         <div className='row mb-5'>
@@ -85,7 +86,7 @@ const Formulario = () => {
           <div className='col-sm-8'>
             <input
               type='password'
-              className='form-control'
+              className={styles.formcontrol}
               id='inputPassword3'
               // placeholder='contraseña'
               value={passwords}
@@ -93,16 +94,16 @@ const Formulario = () => {
               {...register('Contraseña', { required: true, maxLength: 6, pattern: patterns.password })}
               onChange={e => {setPasswords(e.target.value)}}
             />
-            {errors.Contraseña?.type === 'required' && <p className='fail'>{errorMsj.req}</p>}
-            {errors.Contraseña?.type === 'maxLength' && <p className='fail'>{errorMsj.passwordLength}</p>}
-            {errors.Contraseña?.type === 'pattern' && <p className='fail'>{errorMsj.passwordNum}</p>}
+            {errors.Contraseña?.type === 'required' && <p className={styles.fail}>{errorMsj.req}</p>}
+            {errors.Contraseña?.type === 'maxLength' && <p className={styles.fail}>{errorMsj.passwordLength}</p>}
+            {errors.Contraseña?.type === 'pattern' && <p className={styles.fail}>{errorMsj.passwordNum}</p>}
           </div>
         </div>
 
         <div className='row mb-5'>
           <label className='col-sm-8 col-form-label'>Quién eres?</label>
           <div className='col-sm-8'>
-            <select className='form-select' name='Rol' value={rol} onChange={(e) => { setRol(e.target.value); }} >
+            <select className={styles.formselect} name='Rol' value={rol} onChange={(e) => { setRol(e.target.value); }} >
               <option value='rol'> Escoge tu rol</option>
               <option value='Mesero'>Mesero</option>
               <option value='Cocina'>Cocina</option>
@@ -110,8 +111,8 @@ const Formulario = () => {
             </select>
           </div>
         </div>
-        <div className="btnL">
-          <button className="btn-login" type='submit'> Ingresar </button>
+        <div className={styles.btnL}>
+          <button className={styles.btnlogin} type='submit'> Ingresar </button>
         </div>
       </form>
     </div>
